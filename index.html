@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descargas AutoCAD</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0077b6;
+      --secondary: #005a8c;
+      --accent: #ff6b00;
+      --light: #f8f9fa;
+      --dark: #222;
+      --gray: #6c757d;
+      --success: #28a745;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --border-radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-bottom: 70px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 25px 0;
+      text-align: center;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    header .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      margin-right: 15px;
+      vertical-align: middle;
+    }
+
+    /* Main Content */
+    .content {
+      padding: 30px 0;
+    }
+
+    .intro-text {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+      color: var(--gray);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* Download Sections */
+    .download-section {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .download-section:hover {
+      transform: translateY(-5px);
+    }
+
+    .section-header {
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-header h2 {
+      font-size: 1.8rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .section-header i {
+      margin-right: 12px;
+      font-size: 1.5rem;
+    }
+
+    .version-badge {
+      background: var(--accent);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    .section-content {
+      padding: 25px;
+    }
+
+    .download-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .download-option {
+      flex: 1;
+      min-width: 250px;
+      background: var(--light);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      border-left: 5px solid var(--primary);
+      transition: all 0.3s ease;
+    }
+
+    .download-option:hover {
+      background: #e9ecef;
+      transform: translateX(5px);
+    }
+
+    .option-number {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 35px;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .option-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .download-link {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+
+    .download-link:hover {
+      background: var(--secondary);
+      text-decoration: none;
+      color: white;
+    }
+
+    .instructions {
+      background: #f8f9fa;
+      border-radius: var(--border-radius);
+      padding: 20px;
+      border-left: 5px solid var(--accent);
+    }
+
+    .instructions h3 {
+      color: var(--dark);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .instructions h3 i {
+      margin-right: 10px;
+      color: var(--accent);
+    }
+
+    .instructions a {
+      color: var(--primary);
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .instructions a:hover {
+      text-decoration: underline;
+    }
+
+    .instructions a i {
+      margin-right: 8px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-text {
+      font-size: 0.9rem;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .download-options {
+        flex-direction: column;
+      }
+      
+      footer .container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      
+      .version-badge {
+        align-self: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><i class="fas fa-drafting-compass logo"></i> Descargas AutoCAD</h1>
+      <p class="subtitle">Descarga las versiones más recientes de AutoCAD y software relacionado</p>
+    </div>
+  </header>
+
+  <main class="content container">
+    <div class="intro-text">
+      <p>Bienvenido a la página de descargas de AutoCAD. Aquí encontrarás enlaces a las versiones más recientes del software, con múltiples opciones de descarga y tutoriales de instalación.</p>
+    </div>
+
+    <!-- AutoCAD 2024 -->
+    <section class="download-section">
+      <div class="section-header">
+        <h2><i class="fas fa-cube"></i> AutoCAD 2024</h2>
+        <span class="version-badge">Versión 2024</span>
+      </div>
+      <div class="section-content">
+        <div class="download-options">
+          <div class="download-option">
+            <div class="option-title"><span class="option-number">1</span> OPCIÓN 1</div>
+            <p>Descarga desde Google Drive</p>
+            <a href="https://drive.google.com/file/d/12tOLYH8i2s3IuETialzg3C5O2iMxPVcn/view" target="_blank" class="download-link">
+              <i class="fas fa-download"></i> Descargar Ahora
+            </a>
+          </div>
+          <div class="download-option">
+            <div class="option-title"><span class="option-number">2</span> OPCIÓN 2</div>
+            <p>Descarga desde PixelDrain</p>
+            <a href="https://pixeldrain.com/u/XTzxSY58" target="_blank" class="download-link">
+              <i class="fas fa-download"></i> Descargar Ahora
+            </a>
+          </div>
+        </div>
+        <div class="instructions">
+          <h3><i class="fas fa-info-circle"></i> Instrucciones de Instalación</h3>
+          <p>Sigue este tutorial paso a paso para instalar AutoCAD 2024 correctamente:</p>
+          <a href="https://www.facebook.com/watch/?v=170531462762506" target="_blank">
+            <i class="fab fa-facebook"></i> Ver video de instalación en Facebook
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- AutoCAD 2025 -->
+    <section class="download-section">
+      <div class="section-header">
+        <h2><i class="fas fa-cube"></i> AutoCAD 2025</h2>
+        <span class="version-badge">Versión 2025</span>
+      </div>
+      <div class="section-content">
+        <div class="download-options">
+          <div class="download-option">
+            <div class="option-title"><span class="option-number">1</span> OPCIÓN 1</div>
+            <p>Descarga desde Google Drive</p>
+            <a href="https://drive.google.com/file/d/1QLKMI5M3MSxmDIKtxHHwkiTWJsgaO6mE/view" target="_blank" class="download-link">
+              <i class="fas fa-download"></i> Descargar Ahora
+            </a>
+          </div>
+        </div>
+        <div class="instructions">
+          <h3><i class="fas fa-info-circle"></i> Instrucciones de Instalación</h3>
+          <p>Sigue este tutorial paso a paso para instalar AutoCAD 2025 correctamente:</p>
+          <a href="https://www.facebook.com/watch/?v=447379997780546" target="_blank">
+            <i class="fab fa-facebook"></i> Ver video de instalación en Facebook
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- AutoCAD 2026 -->
+    <section class="download-section">
+      <div class="section-header">
+        <h2><i class="fas fa-cube"></i> AutoCAD 2026</h2>
+        <span class="version-badge">Versión 2026</span>
+      </div>
+      <div class="section-content">
+        <div class="download-options">
+          <div class="download-option">
+            <div class="option-title"><span class="option-number">1</span> OPCIÓN 1</div>
+            <p>Descarga desde Google Drive</p>
+            <a href="https://drive.google.com/file/d/1cC6A-DrFVbDgxbhWPfK4VBuISeCLRjHu/view" target="_blank" class="download-link">
+              <i class="fas fa-download"></i> Descargar Ahora
+            </a>
+          </div>
+          <div class="download-option">
+            <div class="option-title"><span class="option-number">2</span> OPCIÓN 2</div>
+            <p>Descarga desde 1Fichier</p>
+            <a href="https://1fichier.com/?iin2o3ml8muwyik19wc8" target="_blank" class="download-link">
+              <i class="fas fa-download"></i> Descargar Ahora
+            </a>
+          </div>
+        </div>
+        <div class="instructions">
+          <h3><i class="fas fa-info-circle"></i> Instrucciones de Instalación</h3>
+          <p>Sigue este tutorial paso a paso para instalar AutoCAD 2026 correctamente:</p>
+          <a href="https://t.me/mastercitoyt/13" target="_blank">
+            <i class="fab fa-telegram"></i> Ver instrucciones en Telegram
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Civil 3D -->
+    <section class="download-section">
+      <div class="section-header">
+        <h2><i class="fas fa-road"></i> Autodesk Civil 3D 2026</h2>
+        <span class="version-badge">Versión 2026</span>
+      </div>
+      <div class="section-content">
+        <div class="download-options">
+          <div class="download-option">
+            <div class="option-title"><span class="option-number">1</span> OPCIÓN 1</div>
+            <p>Descarga desde Google Drive</p>
+            <a href="https://drive.google.com/file/d/1BmOdyh1KNhS_34tiZQCcqNXjHM2QFaNC/view" target="_blank" class="download-link">
+              <i class="fas fa-download"></i> Descargar Ahora
+            </a>
+          </div>
+          <div class="download-option">
+            <div class="option-title"><span class="option-number">2</span> OPCIÓN 2</div>
+            <p>Descarga desde PixelDrain</p>
+            <a href="https://pixeldrain.com/u/Rzq4J6Qu" target="_blank" class="download-link">
+              <i class="fas fa-download"></i> Descargar Ahora
+            </a>
+          </div>
+          <div class="download-option">
+            <div class="option-title"><span class="option-number">3</span> OPCIÓN 3</div>
+            <p>Descarga desde 1Fichier</p>
+            <a href="https://1fichier.com/?w6g059wn977uz4mi1kl2" target="_blank" class="download-link">
+              <i class="fas fa-download"></i> Descargar Ahora
+            </a>
+          </div>
+        </div>
+        <div class="instructions">
+          <h3><i class="fas fa-info-circle"></i> Instrucciones de Instalación</h3>
+          <p>Sigue este tutorial paso a paso para instalar Autodesk Civil 3D 2026 correctamente:</p>
+          <a href="https://t.me/mastercitoyt/218" target="_blank">
+            <i class="fab fa-telegram"></i> Ver instrucciones en Telegram
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-text">
+        © Derechos Reservados <span id="fecha"></span> | Página de Descargas AutoCAD
+      </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Script para mostrar la fecha actualizada automáticamente
+    const fecha = new Date();
+    const opciones = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    document.getElementById("fecha").textContent = fecha.toLocaleDateString('es-ES', opciones);
+
+    // Efecto de animación al cargar las secciones
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('.download-section');
+      
+      sections.forEach((section, index) => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+          section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          section.style.opacity = '1';
+          section.style.transform = 'translateY(0)';
+        }, index * 200);
+      });
+    });
+  </script>
+</body>
+</html>
