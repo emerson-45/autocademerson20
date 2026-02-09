@@ -248,7 +248,7 @@
       margin-right: 8px;
     }
 
-    /* Footer - MODIFICADO: Todo centrado en una sola línea */
+    /* Footer - CENTRADO CORRECTAMENTE */
     footer {
       background: var(--dark);
       color: white;
@@ -265,27 +265,21 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-    }
-
-    .footer-content {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
     }
 
     .footer-text {
       font-size: 0.95rem;
       text-align: center;
       line-height: 1.4;
+      width: 100%;
+      margin-bottom: 10px;
     }
 
     .social-icons {
       display: flex;
       gap: 15px;
-      margin-top: 5px;
+      justify-content: center;
+      width: 100%;
     }
 
     .social-icons a {
@@ -330,6 +324,7 @@
     @media (max-width: 480px) {
       .footer-text {
         font-size: 0.8rem;
+        line-height: 1.3;
       }
       
       .social-icons a {
@@ -486,11 +481,8 @@
 
   <footer>
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-text">
-          © Derechos Reservados <span id="fecha"></span> | Página de Descargas AutoCAD
-        </div>
-      </div>
+      <div class="footer-text">
+        © Derechos Reservados <span id="fecha"></span> | Página de Descargas AutoCAD
     </div>
   </footer>
 
