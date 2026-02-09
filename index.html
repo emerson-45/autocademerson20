@@ -222,7 +222,7 @@
 
     .instructions h3 {
       color: var(--dark);
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       display: flex;
       align-items: center;
     }
@@ -232,33 +232,33 @@
       color: var(--accent);
     }
 
-    .instructions a {
-      color: var(--primary);
-      font-weight: bold;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      cursor: pointer;
+    .instructions p {
+      margin-bottom: 15px;
+      color: var(--gray);
     }
 
-    .instructions a:hover {
-      text-decoration: underline;
+    /* Contenedor de video */
+    .video-container {
+      margin-top: 15px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .instructions a i {
-      margin-right: 8px;
+    .video-note {
+      font-size: 0.85rem;
+      color: #6c757d;
+      margin-top: 8px;
+      text-align: center;
+      font-style: italic;
     }
 
-    /* Estilo para enlaces desactivados */
-    .disabled-link {
-      color: #6c757d !important;
-      cursor: not-allowed !important;
-      opacity: 0.7;
-    }
-
-    .disabled-link:hover {
-      text-decoration: none !important;
-      color: #6c757d !important;
+    /* Estilo para widgets de Telegram */
+    .telegram-widget {
+      margin-top: 15px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     }
 
     /* Footer - CENTRADO CORRECTAMENTE */
@@ -305,69 +305,6 @@
       color: var(--accent);
     }
 
-    /* Modal para mensaje de error */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-content {
-      background: white;
-      padding: 30px;
-      border-radius: var(--border-radius);
-      max-width: 500px;
-      width: 90%;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      animation: modalFadeIn 0.3s ease;
-    }
-
-    @keyframes modalFadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .modal-icon {
-      font-size: 3rem;
-      color: var(--accent);
-      margin-bottom: 15px;
-    }
-
-    .modal-title {
-      color: var(--dark);
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-    }
-
-    .modal-message {
-      color: var(--gray);
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
-
-    .modal-close {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 10px 25px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .modal-close:hover {
-      background: var(--secondary);
-    }
-
     /* Responsive */
     @media (max-width: 768px) {
       .download-options {
@@ -395,6 +332,13 @@
       .social-icons {
         gap: 12px;
       }
+      
+      /* Videos responsivos */
+      .video-container iframe {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 300px;
+      }
     }
     
     @media (max-width: 480px) {
@@ -405,10 +349,6 @@
       
       .social-icons a {
         font-size: 1rem;
-      }
-      
-      .modal-content {
-        padding: 20px;
       }
     }
   </style>
@@ -423,7 +363,7 @@
 
   <main class="content container">
     <div class="intro-text">
-      <p>Bienvenido a la página de descargas de AutoCAD. Aquí encontrarás enlaces a las versiones más recientes del software, con múltiples opciones de descarga y tutoriales de instalación.</p>
+      <p>Bienvenido a la página de descargas de AutoCAD. Aquí encontrarás enlaces a las versiones más recientes del software, con múltiples opciones de descarga y tutoriales de instalación en video.</p>
     </div>
 
     <!-- AutoCAD 2024 -->
@@ -452,9 +392,22 @@
         <div class="instructions">
           <h3><i class="fas fa-info-circle"></i> Instrucciones de Instalación</h3>
           <p>Sigue este tutorial paso a paso para instalar AutoCAD 2024 correctamente:</p>
-          <a class="disabled-link" onclick="showErrorMessage('AutoCAD 2024')">
-            <i class="fab fa-facebook"></i> Estamos trabajando en reparar este enlace
-          </a>
+          
+          <!-- Video de Facebook para AutoCAD 2024 -->
+          <div class="video-container">
+            <iframe 
+              src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FMASTERCITOYT%2Fvideos%2F170531462762506%2F&show_text=false&width=560&t=0" 
+              width="560" 
+              height="314" 
+              style="border:none;overflow:hidden" 
+              scrolling="no" 
+              frameborder="0" 
+              allowfullscreen="true" 
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" 
+              allowFullScreen="true">
+            </iframe>
+          </div>
+          <p class="video-note">Video tutorial de instalación de AutoCAD 2024</p>
         </div>
       </div>
     </section>
@@ -478,9 +431,22 @@
         <div class="instructions">
           <h3><i class="fas fa-info-circle"></i> Instrucciones de Instalación</h3>
           <p>Sigue este tutorial paso a paso para instalar AutoCAD 2025 correctamente:</p>
-          <a class="disabled-link" onclick="showErrorMessage('AutoCAD 2025')">
-            <i class="fab fa-facebook"></i> Estamos trabajando en reparar este enlace
-          </a>
+          
+          <!-- Video de Facebook para AutoCAD 2025 -->
+          <div class="video-container">
+            <iframe 
+              src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FMASTERCITOYT%2Fvideos%2F447379997780546%2F&show_text=false&width=560&t=0" 
+              width="560" 
+              height="314" 
+              style="border:none;overflow:hidden" 
+              scrolling="no" 
+              frameborder="0" 
+              allowfullscreen="true" 
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" 
+              allowFullScreen="true">
+            </iframe>
+          </div>
+          <p class="video-note">Video tutorial de instalación de AutoCAD 2025</p>
         </div>
       </div>
     </section>
@@ -511,9 +477,16 @@
         <div class="instructions">
           <h3><i class="fas fa-info-circle"></i> Instrucciones de Instalación</h3>
           <p>Sigue este tutorial paso a paso para instalar AutoCAD 2026 correctamente:</p>
-          <a class="disabled-link" onclick="showErrorMessage('AutoCAD 2026')">
-            <i class="fab fa-telegram"></i> Estamos trabajando en reparar este enlace
-          </a>
+          
+          <!-- Widget de Telegram para AutoCAD 2026 -->
+          <div class="telegram-widget">
+            <script async 
+                    src="https://telegram.org/js/telegram-widget.js?22" 
+                    data-telegram-post="mastercitoyt/13" 
+                    data-width="100%">
+            </script>
+          </div>
+          <p class="video-note">Instrucciones de instalación en Telegram</p>
         </div>
       </div>
     </section>
@@ -551,34 +524,28 @@
         <div class="instructions">
           <h3><i class="fas fa-info-circle"></i> Instrucciones de Instalación</h3>
           <p>Sigue este tutorial paso a paso para instalar Autodesk Civil 3D 2026 correctamente:</p>
-          <a class="disabled-link" onclick="showErrorMessage('Autodesk Civil 3D 2026')">
-            <i class="fab fa-telegram"></i> Estamos trabajando en reparar este enlace
-          </a>
-        </div>
+          
+          <iframe 
+    src="https://odysee.com/$/embed/@MastercitoYT:5/civil-3d-2026:0" 
+    width="560" 
+    height="315" 
+    frameborder="0" 
+    allowfullscreen>
+</iframe>
       </div>
     </section>
   </main>
-
-  <!-- Modal para mostrar mensaje de error -->
-  <div id="errorModal" class="modal-overlay">
-    <div class="modal-content">
-      <div class="modal-icon">
-        <i class="fas fa-tools"></i>
-      </div>
-      <h3 class="modal-title">Enlace temporalmente no disponible</h3>
-      <p class="modal-message" id="modalMessage">
-        Estamos trabajando en reparar este enlace. Por favor, inténtalo de nuevo más tarde.
-      </p>
-      <button class="modal-close" onclick="closeModal()">Aceptar</button>
-    </div>
-  </div>
 
   <footer>
     <div class="container">
       <div class="footer-text">
         © Derechos Reservados <span id="fecha"></span> | Página de Descargas AutoCAD
       </div>
-
+      <div class="social-icons">
+        <a href="https://www.facebook.com/MASTERCITOYT" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://t.me/mastercitoyt" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+        <a href="#" title="YouTube" onclick="alert('Canal de YouTube próximamente'); return false;"><i class="fab fa-youtube"></i></a>
+      </div>
     </div>
   </footer>
 
@@ -602,68 +569,22 @@
           section.style.transform = 'translateY(0)';
         }, index * 200);
       });
-    });
-
-    // Función para mostrar mensaje de error
-    function showErrorMessage(productName) {
-      const modal = document.getElementById('errorModal');
-      const modalMessage = document.getElementById('modalMessage');
       
-      modalMessage.textContent = `Las instrucciones de instalación para ${productName} están temporalmente no disponibles. Estamos trabajando en reparar este enlace. Por favor, inténtalo de nuevo más tarde.`;
-      
-      modal.style.display = 'flex';
-      
-      // Evitar comportamiento por defecto del enlace
-      return false;
-    }
-
-    // Función para cerrar el modal
-    function closeModal() {
-      const modal = document.getElementById('errorModal');
-      modal.style.display = 'none';
-    }
-
-    // Cerrar modal al hacer clic fuera del contenido
-    document.getElementById('errorModal').addEventListener('click', function(e) {
-      if (e.target === this) {
-        closeModal();
-      }
-    });
-
-    // Cerrar modal con tecla ESC
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeModal();
-      }
+      // Cargar widgets de Telegram después de que la página esté cargada
+      setTimeout(function() {
+        const telegramScripts = document.querySelectorAll('script[data-telegram-post]');
+        telegramScripts.forEach(function(script) {
+          if (!script.parentNode.querySelector('.telegram-widget iframe')) {
+            const newScript = document.createElement('script');
+            newScript.async = true;
+            newScript.src = script.src;
+            newScript.setAttribute('data-telegram-post', script.getAttribute('data-telegram-post'));
+            newScript.setAttribute('data-width', script.getAttribute('data-width'));
+            script.parentNode.replaceChild(newScript, script);
+          }
+        });
+      }, 1000);
     });
   </script>
-</body>
-</html>
-
-
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video de Facebook</title>
-</head>
-<body>
-    <h1>Video de MastercitoYT</h1>
-    
-    <iframe 
-        src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FMASTERCITOYT%2Fvideos%2F170531462762506%2F&show_text=false&width=560&t=0" 
-        width="560" 
-        height="314" 
-        style="border:none;overflow:hidden" 
-        scrolling="no" 
-        frameborder="0" 
-        allowfullscreen="true" 
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" 
-        allowFullScreen="true">
-    </iframe>
 </body>
 </html>
