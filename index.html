@@ -238,6 +238,7 @@
       text-decoration: none;
       display: inline-flex;
       align-items: center;
+      cursor: pointer;
     }
 
     .instructions a:hover {
@@ -246,6 +247,18 @@
 
     .instructions a i {
       margin-right: 8px;
+    }
+
+    /* Estilo para enlaces desactivados */
+    .disabled-link {
+      color: #6c757d !important;
+      cursor: not-allowed !important;
+      opacity: 0.7;
+    }
+
+    .disabled-link:hover {
+      text-decoration: none !important;
+      color: #6c757d !important;
     }
 
     /* Footer - CENTRADO CORRECTAMENTE */
@@ -292,6 +305,69 @@
       color: var(--accent);
     }
 
+    /* Modal para mensaje de error */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: var(--border-radius);
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-icon {
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    .modal-title {
+      color: var(--dark);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .modal-message {
+      color: var(--gray);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .modal-close {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .modal-close:hover {
+      background: var(--secondary);
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .download-options {
@@ -329,6 +405,10 @@
       
       .social-icons a {
         font-size: 1rem;
+      }
+      
+      .modal-content {
+        padding: 20px;
       }
     }
   </style>
@@ -372,8 +452,8 @@
         <div class="instructions">
           <h3><i class="fas fa-info-circle"></i> Instrucciones de Instalación</h3>
           <p>Sigue este tutorial paso a paso para instalar AutoCAD 2024 correctamente:</p>
-          <a href="https://www.facebook.com/watch/?v=170531462762506" target="_blank">
-            <i class="fab fa-facebook"></i> Ver video de instalación en Facebook
+          <a class="disabled-link" onclick="showErrorMessage('AutoCAD 2024')">
+            <i class="fab fa-facebook"></i> Estamos trabajando en reparar este enlace
           </a>
         </div>
       </div>
@@ -398,8 +478,8 @@
         <div class="instructions">
           <h3><i class="fas fa-info-circle"></i> Instrucciones de Instalación</h3>
           <p>Sigue este tutorial paso a paso para instalar AutoCAD 2025 correctamente:</p>
-          <a href="https://www.facebook.com/watch/?v=447379997780546" target="_blank">
-            <i class="fab fa-facebook"></i> Ver video de instalación en Facebook
+          <a class="disabled-link" onclick="showErrorMessage('AutoCAD 2025')">
+            <i class="fab fa-facebook"></i> Estamos trabajando en reparar este enlace
           </a>
         </div>
       </div>
@@ -431,8 +511,8 @@
         <div class="instructions">
           <h3><i class="fas fa-info-circle"></i> Instrucciones de Instalación</h3>
           <p>Sigue este tutorial paso a paso para instalar AutoCAD 2026 correctamente:</p>
-          <a href="https://t.me/mastercitoyt/13" target="_blank">
-            <i class="fab fa-telegram"></i> Ver instrucciones en Telegram
+          <a class="disabled-link" onclick="showErrorMessage('AutoCAD 2026')">
+            <i class="fab fa-telegram"></i> Estamos trabajando en reparar este enlace
           </a>
         </div>
       </div>
@@ -471,18 +551,34 @@
         <div class="instructions">
           <h3><i class="fas fa-info-circle"></i> Instrucciones de Instalación</h3>
           <p>Sigue este tutorial paso a paso para instalar Autodesk Civil 3D 2026 correctamente:</p>
-          <a href="https://t.me/mastercitoyt/218" target="_blank">
-            <i class="fab fa-telegram"></i> Ver instrucciones en Telegram
+          <a class="disabled-link" onclick="showErrorMessage('Autodesk Civil 3D 2026')">
+            <i class="fab fa-telegram"></i> Estamos trabajando en reparar este enlace
           </a>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- Modal para mostrar mensaje de error -->
+  <div id="errorModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-icon">
+        <i class="fas fa-tools"></i>
+      </div>
+      <h3 class="modal-title">Enlace temporalmente no disponible</h3>
+      <p class="modal-message" id="modalMessage">
+        Estamos trabajando en reparar este enlace. Por favor, inténtalo de nuevo más tarde.
+      </p>
+      <button class="modal-close" onclick="closeModal()">Aceptar</button>
+    </div>
+  </div>
+
   <footer>
     <div class="container">
       <div class="footer-text">
-        © Derechos Reservados - Emerson Castro <span id="fecha"></span> | Página de Descargas AutoCAD
+        © Derechos Reservados <span id="fecha"></span> | Página de Descargas AutoCAD
+      </div>
+
     </div>
   </footer>
 
@@ -506,6 +602,39 @@
           section.style.transform = 'translateY(0)';
         }, index * 200);
       });
+    });
+
+    // Función para mostrar mensaje de error
+    function showErrorMessage(productName) {
+      const modal = document.getElementById('errorModal');
+      const modalMessage = document.getElementById('modalMessage');
+      
+      modalMessage.textContent = `Las instrucciones de instalación para ${productName} están temporalmente no disponibles. Estamos trabajando en reparar este enlace. Por favor, inténtalo de nuevo más tarde.`;
+      
+      modal.style.display = 'flex';
+      
+      // Evitar comportamiento por defecto del enlace
+      return false;
+    }
+
+    // Función para cerrar el modal
+    function closeModal() {
+      const modal = document.getElementById('errorModal');
+      modal.style.display = 'none';
+    }
+
+    // Cerrar modal al hacer clic fuera del contenido
+    document.getElementById('errorModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    // Cerrar modal con tecla ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
     });
   </script>
 </body>
